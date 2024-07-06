@@ -18,13 +18,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yudhees.foodApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-        "expo-font"
-    ]
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9a857ba0-5fc0-4618-85a3-89240d4f79a7"
+      }
+    }
   }
 }
