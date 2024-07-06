@@ -3,8 +3,25 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Tabs from './navigation/Tabs.js';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen'
+import { useEffect } from 'react';
 const Stack=createNativeStackNavigator()
+SplashScreen.preventAutoHideAsync();
 export default function App() {
+  const [loaded, error] =useFonts({
+    'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
+    'Roboto-Regular':require('./assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Bold':require('./assets/fonts/Roboto-Bold.ttf')
+  });
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+  if (!loaded && !error) {
+    return null;
+  }
   return (
   <SafeAreaView style={{ flex:1 }}>
    <NavigationContainer>
